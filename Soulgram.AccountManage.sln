@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Api", "Soulgram.AccountManage.Api\Soulgram.AccountManage.Api.csproj", "{13444B10-511B-4B22-95AC-32892A9E2745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Appliaction", "Soulgram.AccountManage.Appliaction\Soulgram.AccountManage.Appliaction.csproj", "{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Domain", "Soulgram.AccountManage.Domain\Soulgram.AccountManage.Domain.csproj", "{D8274120-FE91-44C4-95BC-CF2279F2276C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Infrastracture", "Soulgram.AccountManage.Infrastracture\Soulgram.AccountManage.Infrastracture.csproj", "{93C3DA8C-89EF-479C-84C8-2FE065091301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Persistence", "Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj", "{9B43BB34-2DAA-4DCA-A4C6-392DB8FE8C31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13444B10-511B-4B22-95AC-32892A9E2745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13444B10-511B-4B22-95AC-32892A9E2745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13444B10-511B-4B22-95AC-32892A9E2745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13444B10-511B-4B22-95AC-32892A9E2745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8274120-FE91-44C4-95BC-CF2279F2276C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8274120-FE91-44C4-95BC-CF2279F2276C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8274120-FE91-44C4-95BC-CF2279F2276C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8274120-FE91-44C4-95BC-CF2279F2276C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C3DA8C-89EF-479C-84C8-2FE065091301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C3DA8C-89EF-479C-84C8-2FE065091301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C3DA8C-89EF-479C-84C8-2FE065091301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C3DA8C-89EF-479C-84C8-2FE065091301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B43BB34-2DAA-4DCA-A4C6-392DB8FE8C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B43BB34-2DAA-4DCA-A4C6-392DB8FE8C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B43BB34-2DAA-4DCA-A4C6-392DB8FE8C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B43BB34-2DAA-4DCA-A4C6-392DB8FE8C31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
