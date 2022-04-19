@@ -7,16 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Class1.cs"/>
+        <Compile Remove="Class1.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="10.0.1"/>
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1"/>
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj"/>
+        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

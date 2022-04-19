@@ -20,7 +20,14 @@ public class SuccessedUserRegistrationEventHandler : IIntegrationEventHandler<Su
         var request = @event.ToCreateUserRequest();
         var createUserCommand = new CreateUserCommand(request);
 
-        await _mediator.Send(createUserCommand);
-        //TODO make recall in case of exception
+        try
+        {
+            await _mediator.Send(createUserCommand);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

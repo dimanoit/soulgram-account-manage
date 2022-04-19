@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.EventHandling;
+using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 using Soulgram.Eventbus;
 using Soulgram.Eventbus.Interfaces;
 using Soulgram.EventBus.RabbitMq;
@@ -43,8 +44,6 @@ public static class ServiceInjector
             eventBusOption.Exchange,
             eventBusOption.Queue);
 
-        AddEventsSubscriptions(eventBus);
-
         return eventBus;
     }
 
@@ -74,9 +73,5 @@ public static class ServiceInjector
     {
         serviceCollection.AddTransient<SuccessedUserRegistrationEventHandler>();
         serviceCollection.AddTransient<DeletedUserEventHandler>();
-    }
-
-    private static void AddEventsSubscriptions(EventBus.RabbitMq.EventBus eventBus)
-    {
     }
 }

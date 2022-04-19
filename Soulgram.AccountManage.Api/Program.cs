@@ -8,11 +8,10 @@ using Soulgram.Eventbus.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-builder.Services.AddControllers();
 builder.Services.AddPersistence(configuration);
-builder.Services.AddApplication();
 builder.Services.AddInfrastructure(configuration);
-
+builder.Services.AddControllers();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
