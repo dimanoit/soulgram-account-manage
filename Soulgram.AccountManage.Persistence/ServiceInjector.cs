@@ -11,7 +11,12 @@ public static class ServiceInjector
         IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("AccountDbConnection");
-        serviceCollection.AddDbContext<SoulgramContext>(
-            options => options.UseSqlServer(connectionString));
+        if (string.IsNullOrEmpty(connectionString))
+        {
+            throw new ArgumentNullException(nameof(connectionString));
+        }
+
+        //TODO temp fix, need to think about separete context for iventHandlers
+        serviceCollection.AddDbContext<SoulgramContext>(_ => _.UseSqlServer(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient);
     }
 }
