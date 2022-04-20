@@ -10,6 +10,8 @@ public class ProfileImageConfiguration : IEntityTypeConfiguration<ProfileImage>
     {
         builder.HasKey(pi => pi.Id);
 
+        builder.Property(pi => pi.CreationDate).IsRequired();
+        
         builder.HasOne(pi => pi.UserInfo)
             .WithMany(ui => ui.ProfileImages)
             .HasForeignKey(pi => pi.UserId);

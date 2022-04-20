@@ -1,5 +1,5 @@
 using MediatR;
-using Soulgram.AccountManage.Appliaction.Commands;
+using Soulgram.AccountManage.Application.Commands;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 using Soulgram.Eventbus.Interfaces;
 
@@ -17,7 +17,10 @@ public class DeletedUserEventHandler : IIntegrationEventHandler<DeletedUserEvent
     public async Task Handle(DeletedUserEvent @event)
     {
         var userId = @event.UserId;
-        var deleteCommand = new DeleteUserCommand(userId);
+        var deleteCommand = new DeleteUserCommand()
+        {
+            UserId = userId
+        };
 
         try
         {

@@ -6,6 +6,8 @@ public class UserInfo
     public DateTime Birthdate { get; set; }
     public string Email { get; set; }
     public string Nickname { get; set; }
+    
+    public string Fullname { get; set; }
 
     public ICollection<ProfileImage> ProfileImages { get; set; }
     public ICollection<UserHobby> UserHobbies { get; set; }

@@ -13,5 +13,6 @@ public class UserInfoConfiguration : IEntityTypeConfiguration<UserInfo>
         builder.Property(ui => ui.Birthdate).IsRequired();
         builder.Property(ui => ui.Email).IsRequired();
         builder.Property(ui => ui.Nickname).IsRequired();
+        builder.Property(ui => ui.Fullname).IsRequired();
     }
 }

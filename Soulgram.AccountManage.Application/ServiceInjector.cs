@@ -1,9 +1,9 @@
 using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Soulgram.AccountManage.Appliaction.Commands;
+using Soulgram.AccountManage.Application.Commands;
 
-namespace Soulgram.AccountManage.Appliaction;
+namespace Soulgram.AccountManage.Application;
 
 public static class ServiceInjector
 {

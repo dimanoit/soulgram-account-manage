@@ -1,4 +1,4 @@
-using Soulgram.AccountManage.Appliaction;
+using Soulgram.AccountManage.Application;
 using Soulgram.AccountManage.Infrastracture;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.EventHandling;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;

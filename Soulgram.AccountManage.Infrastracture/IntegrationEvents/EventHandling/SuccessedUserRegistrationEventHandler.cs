@@ -1,5 +1,5 @@
 using MediatR;
-using Soulgram.AccountManage.Appliaction.Commands;
+using Soulgram.AccountManage.Application.Commands;
 using Soulgram.AccountManage.Infrastracture.Converters;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 using Soulgram.Eventbus.Interfaces;
@@ -17,8 +17,10 @@ public class SuccessedUserRegistrationEventHandler : IIntegrationEventHandler<Su
 
     public async Task Handle(SuccessedUserRegistrationEvent @event)
     {
-        var request = @event.ToCreateUserRequest();
-        var createUserCommand = new CreateUserCommand(request);
+        var createUserCommand = new CreateUserCommand()
+        {
+            RequestModel = @event.ToCreateUserRequest()
+        };
 
         try
         {

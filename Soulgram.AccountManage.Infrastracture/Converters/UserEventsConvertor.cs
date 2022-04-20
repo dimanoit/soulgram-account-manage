@@ -1,4 +1,4 @@
-using Soulgram.AccountManage.Appliaction.Model.Requests;
+using Soulgram.AccountManage.Application.Model.Requests;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 
 namespace Soulgram.AccountManage.Infrastracture.Converters;
@@ -12,7 +12,8 @@ public static class UserEventsConvertor
             Birthday = @event.Birthday,
             Email = @event.Email,
             Nickname = @event.Nickname,
-            UserId = @event.UserId
+            UserId = @event.UserId,
+            Fullname = @event.Fullname
         };
     }
 }

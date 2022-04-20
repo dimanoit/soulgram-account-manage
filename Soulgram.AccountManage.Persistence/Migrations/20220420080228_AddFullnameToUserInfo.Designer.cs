@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soulgram.AccountManage.Persistence;
 
@@ -11,9 +12,10 @@ using Soulgram.AccountManage.Persistence;
 namespace Soulgram.AccountManage.Persistence.Migrations
 {
     [DbContext(typeof(SoulgramContext))]
-    partial class SoulgramContextModelSnapshot : ModelSnapshot
+    [Migration("20220420080228_AddFullnameToUserInfo")]
+    partial class AddFullnameToUserInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,7 +71,7 @@ namespace Soulgram.AccountManage.Persistence.Migrations
 
                     b.HasIndex("HobbyId");
 
-                    b.ToTable("HobbyImages");
+                    b.ToTable("HobbyImage");
                 });
 
             modelBuilder.Entity("Soulgram.AccountManage.Domain.Entities.ProfileImage", b =>
@@ -77,22 +79,23 @@ namespace Soulgram.AccountManage.Persistence.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("ImgUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserInfoUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserInfoUserId");
 
-                    b.ToTable("ProfileImages");
+                    b.ToTable("ProfileImage");
                 });
 
             modelBuilder.Entity("Soulgram.AccountManage.Domain.Entities.UserHobby", b =>
@@ -153,7 +156,7 @@ namespace Soulgram.AccountManage.Persistence.Migrations
                 {
                     b.HasOne("Soulgram.AccountManage.Domain.Entities.UserInfo", "UserInfo")
                         .WithMany("ProfileImages")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserInfoUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

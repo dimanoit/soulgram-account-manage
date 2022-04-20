@@ -1,26 +1,26 @@
 using MediatR;
-using Soulgram.AccountManage.Appliaction.Converters;
+using Soulgram.AccountManage.Application.Converters;
 using Soulgram.AccountManage.Domain.Entities;
 using Soulgram.AccountManage.Persistence;
 
-namespace Soulgram.AccountManage.Appliaction.Commands;
+namespace Soulgram.AccountManage.Application.Commands;
 
 internal class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
 {
-    private readonly SoulgramContext _soulgramContext;
+    private readonly SoulgramContext _dbContext;
 
-    public CreateUserCommandHandler(SoulgramContext soulgramContext)
+    public CreateUserCommandHandler(SoulgramContext dbContext)
     {
-        _soulgramContext = soulgramContext;
+        _dbContext = dbContext;
     }
 
     public async Task<Unit> Handle(CreateUserCommand command, CancellationToken cancellationToken)
     {
         var userInfo = command.RequestModel.ToUserInfo();
 
-        _soulgramContext.UserInfos.Add(userInfo);
+        _dbContext.UserInfos.Add(userInfo);
 
-        var countOfUpdatedRows = await _soulgramContext.SaveChangesAsync(cancellationToken);
+        var countOfUpdatedRows = await _dbContext.SaveChangesAsync(cancellationToken);
 
         if (countOfUpdatedRows != 1)
             //TODO solve problem with logging and string interpolation

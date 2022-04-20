@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Api", "Soulgram.AccountManage.Api\Soulgram.AccountManage.Api.csproj", "{13444B10-511B-4B22-95AC-32892A9E2745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Appliaction", "Soulgram.AccountManage.Appliaction\Soulgram.AccountManage.Appliaction.csproj", "{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Application", "Soulgram.AccountManage.Application\Soulgram.AccountManage.Application.csproj", "{4D0BBB49-CFF8-402D-8D71-74314A6CFFC2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Soulgram.AccountManage.Domain", "Soulgram.AccountManage.Domain\Soulgram.AccountManage.Domain.csproj", "{D8274120-FE91-44C4-95BC-CF2279F2276C}"
 EndProject
