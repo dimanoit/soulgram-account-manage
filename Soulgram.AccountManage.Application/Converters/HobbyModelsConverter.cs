@@ -7,7 +7,7 @@ public static class HobbyModelsConverter
 {
     public static Hobby ToHobby(this CreateHobbyRequest hobbyRequest)
     {
-        return new Hobby()
+        return new Hobby
         {
             Id = Guid.NewGuid().ToString(),
             Name = hobbyRequest.Name,

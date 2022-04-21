@@ -27,7 +27,7 @@ public class UserInfoController : ControllerBase
     public async Task AddHobbyToUser(string userId, string hobbyId,
         CancellationToken cancellationToken)
     {
-        var addHobbyToUserCommand = new AddHobbyToUserCommand()
+        var addHobbyToUserCommand = new AddHobbyToUserCommand
         {
             HobbyId = hobbyId,
             UserId = userId
@@ -35,14 +35,14 @@ public class UserInfoController : ControllerBase
 
         await _mediator.Send(addHobbyToUserCommand, cancellationToken);
     }
-    
+
     [HttpPatch("{userId}/profile-img")]
     public async Task<string> UploadProfilePicture(
         string userId,
         [FromForm] IFormFile picture,
         CancellationToken cancellationToken)
     {
-        var uploadImageCommand = new UploadProfileImageCommand()
+        var uploadImageCommand = new UploadProfileImageCommand
         {
             Img = picture,
             UserId = userId

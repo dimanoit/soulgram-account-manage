@@ -2,7 +2,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents.EventHandling;
-using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 using Soulgram.Eventbus;
 using Soulgram.Eventbus.Interfaces;
 using Soulgram.EventBus.RabbitMq;
@@ -21,7 +20,7 @@ public static class ServiceInjector
         serviceCollection.AddEventBus(configuration);
         serviceCollection.AddLocalFileManager(configuration);
     }
-    
+
     private static void AddLocalFileManager(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<LocalFileManagerOptions>(options =>
@@ -29,7 +28,7 @@ public static class ServiceInjector
 
         services.AddScoped<IFileManager, LocalFileManager>();
     }
-    
+
     private static void AddEventBus(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         var eventBusOption = configuration

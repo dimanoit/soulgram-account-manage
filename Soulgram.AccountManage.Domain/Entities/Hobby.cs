@@ -8,7 +8,7 @@ public class Hobby
     public bool IsActive { get; set; }
     public bool IsGroupOnly { get; set; }
     public int CountOfUsage { get; set; }
-    
+
     public ICollection<HobbyImage> HobbyImages { get; set; }
     public ICollection<UserHobby> UserHobbies { get; set; }
 }

@@ -5,7 +5,7 @@ using Soulgram.AccountManage.Persistence;
 
 namespace Soulgram.AccountManage.Application.Commands;
 
-public class AddHobbyToUserCommandHandler: IRequestHandler<AddHobbyToUserCommand>
+public class AddHobbyToUserCommandHandler : IRequestHandler<AddHobbyToUserCommand>
 {
     private readonly SoulgramContext _dbContext;
 
@@ -20,18 +20,18 @@ public class AddHobbyToUserCommandHandler: IRequestHandler<AddHobbyToUserCommand
         hobby.CountOfUsage += 1;
 
         _dbContext.Hobbies.Update(hobby);
-        
-        var userHobby = new UserHobby()
+
+        var userHobby = new UserHobby
         {
             HobbieId = request.HobbyId,
             UserId = request.UserId,
             CreationDate = DateTime.UtcNow
         };
-        
+
         _dbContext.UserHobbies.Add(userHobby);
-        
+
         await _dbContext.SaveChangesAsync(cancellationToken);
-        
+
         return Unit.Value;
     }
 }

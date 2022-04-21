@@ -17,6 +17,7 @@ public static class ServiceInjector
         }
 
         //TODO temp fix, need to think about separete context for iventHandlers
-        serviceCollection.AddDbContext<SoulgramContext>(_ => _.UseSqlServer(connectionString), ServiceLifetime.Transient, ServiceLifetime.Transient);
+        serviceCollection.AddDbContext<SoulgramContext>(_ => _.UseSqlServer(connectionString),
+            ServiceLifetime.Transient, ServiceLifetime.Transient);
     }
 }

@@ -14,7 +14,7 @@ internal static class UserModelsConverter
             Nickname = userRequest.Nickname,
             Birthdate = userRequest.Birthday,
             UserId = userRequest.UserId,
-            Fullname = userRequest.Fullname,
+            Fullname = userRequest.Fullname
         };
     }
 

@@ -17,7 +17,7 @@ public class DeletedUserEventHandler : IIntegrationEventHandler<DeletedUserEvent
     public async Task Handle(DeletedUserEvent @event)
     {
         var userId = @event.UserId;
-        var deleteCommand = new DeleteUserCommand()
+        var deleteCommand = new DeleteUserCommand
         {
             UserId = userId
         };

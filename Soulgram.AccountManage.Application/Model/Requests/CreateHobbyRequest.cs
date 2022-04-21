@@ -9,4 +9,3 @@ public class CreateHobbyRequest
 
     public IEnumerable<string> ImgUrls { get; set; }
 }
-

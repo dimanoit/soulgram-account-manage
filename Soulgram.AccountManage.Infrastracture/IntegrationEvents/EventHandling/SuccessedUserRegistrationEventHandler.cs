@@ -17,7 +17,7 @@ public class SuccessedUserRegistrationEventHandler : IIntegrationEventHandler<Su
 
     public async Task Handle(SuccessedUserRegistrationEvent @event)
     {
-        var createUserCommand = new CreateUserCommand()
+        var createUserCommand = new CreateUserCommand
         {
             RequestModel = @event.ToCreateUserRequest()
         };
