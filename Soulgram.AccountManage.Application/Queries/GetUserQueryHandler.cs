@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Soulgram.AccountManage.Application.Converters;
@@ -7,7 +8,7 @@ using Soulgram.AccountManage.Persistence;
 
 namespace Soulgram.AccountManage.Application.Queries;
 
-public class GetUserQueryHandler : IRequestHandler<GetUserQuery, CompactUserInfoResponse>
+public class GetUserQueryHandler : IRequestHandler<GetUserQuery, CompactUserInfoResponse?>
 {
     private readonly SoulgramContext _dbContext;
 
@@ -16,9 +17,9 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, CompactUserInfo
         _dbContext = dbContext;
     }
 
-    public async Task<CompactUserInfoResponse> Handle(GetUserQuery request, CancellationToken cancellationToken)
+    public async Task<CompactUserInfoResponse?> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        var lastImageTask = _dbContext
+        var lastImage = await _dbContext
             .ProfileImages
             .AsNoTracking()
             .Where(i => i.UserId == request.UserId)
@@ -26,24 +27,28 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, CompactUserInfo
             .Select(i => i.ImgUrl)
             .LastOrDefaultAsync(cancellationToken);
 
-        var userInfoTask = _dbContext
+        var userInfo = await _dbContext
             .UserInfos
             .AsNoTracking()
             .Where(u => u.UserId == request.UserId)
             .Include(u => u.UserHobbies)
             .ThenInclude(u => u.Hobby)
-            .Select(u => new
-            {
-                u,
-                //TODO put 3 into config
-                hobbies = u.UserHobbies.Select(c => c.Hobby.Name).Take(3)
-            })
+            .Select(UserInfoWithHobbySelector(lastImage))
             .SingleOrDefaultAsync(cancellationToken);
 
-        await Task.WhenAll(lastImageTask, userInfoTask);
-
-        var userInfo = userInfoTask.Result.u.ToCompactUserInfoResponse(lastImageTask.Result, userInfoTask.Result.hobbies);
-
         return userInfo;
+    }
+
+    private static Expression<Func<UserInfo, CompactUserInfoResponse>> UserInfoWithHobbySelector(string? lastImage)
+    {
+        return u =>
+            u.ToCompactUserInfoResponse(
+                lastImage,
+                u.UserHobbies
+                    .Select(uh => uh.Hobby)
+                    .OrderBy(h => h.CountOfUsage)
+                    //TODO get 3 from Config
+                    .Take(3)
+                    .Select(h => h.Name));
     }
 }

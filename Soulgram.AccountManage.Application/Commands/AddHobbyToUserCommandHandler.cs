@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Soulgram.AccountManage.Domain.Entities;
 using Soulgram.AccountManage.Persistence;
 
@@ -15,14 +16,20 @@ public class AddHobbyToUserCommandHandler: IRequestHandler<AddHobbyToUserCommand
 
     public async Task<Unit> Handle(AddHobbyToUserCommand request, CancellationToken cancellationToken)
     {
+        var hobby = await _dbContext.Hobbies.FirstAsync(h => h.Id == request.HobbyId, cancellationToken);
+        hobby.CountOfUsage += 1;
+
+        _dbContext.Hobbies.Update(hobby);
+        
         var userHobby = new UserHobby()
         {
             HobbieId = request.HobbyId,
             UserId = request.UserId,
             CreationDate = DateTime.UtcNow
         };
-
+        
         _dbContext.UserHobbies.Add(userHobby);
+        
         await _dbContext.SaveChangesAsync(cancellationToken);
         
         return Unit.Value;

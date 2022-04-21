@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soulgram.AccountManage.Persistence;
 
@@ -11,9 +12,10 @@ using Soulgram.AccountManage.Persistence;
 namespace Soulgram.AccountManage.Persistence.Migrations
 {
     [DbContext(typeof(SoulgramContext))]
-    partial class SoulgramContextModelSnapshot : ModelSnapshot
+    [Migration("20220421105013_AddCountOfUsageToHobby")]
+    partial class AddCountOfUsageToHobby
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

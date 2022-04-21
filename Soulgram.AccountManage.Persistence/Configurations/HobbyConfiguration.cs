@@ -19,5 +19,6 @@ public class HobbyConfiguration : IEntityTypeConfiguration<Hobby>
         builder.Property(h => h.IsActive).IsRequired();
         builder.Property(h => h.Desription).IsRequired();
         builder.Property(h => h.IsGroupOnly).IsRequired();
+        builder.Property(h => h.CountOfUsage).IsRequired();
     }
 }

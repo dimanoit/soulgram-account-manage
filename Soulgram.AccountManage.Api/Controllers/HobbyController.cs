@@ -16,7 +16,7 @@ public class HobbyController : ControllerBase
     }
 
     [HttpPost]
-    public async Task CreateHobby([FromBody]CreateHobbyRequest request)
+    public async Task CreateHobby([FromBody] CreateHobbyRequest request)
     {
         var command = new CreateHobbyCommand()
         {
