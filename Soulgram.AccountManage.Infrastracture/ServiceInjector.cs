@@ -6,6 +6,9 @@ using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
 using Soulgram.Eventbus;
 using Soulgram.Eventbus.Interfaces;
 using Soulgram.EventBus.RabbitMq;
+using Soulgram.File.Manager;
+using Soulgram.File.Manager.Interfaces;
+using Soulgram.File.Manager.Models;
 
 namespace Soulgram.AccountManage.Infrastracture;
 
@@ -16,8 +19,17 @@ public static class ServiceInjector
         IConfiguration configuration)
     {
         serviceCollection.AddEventBus(configuration);
+        serviceCollection.AddLocalFileManager(configuration);
     }
+    
+    private static void AddLocalFileManager(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<LocalFileManagerOptions>(options =>
+            configuration.GetSection("LocalFileManagerOptions").Bind(options));
 
+        services.AddScoped<IFileManager, LocalFileManager>();
+    }
+    
     private static void AddEventBus(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         var eventBusOption = configuration
