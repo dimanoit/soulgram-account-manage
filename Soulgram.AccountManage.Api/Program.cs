@@ -1,7 +1,6 @@
 using Soulgram.AccountManage.Application;
 using Soulgram.AccountManage.Infrastracture;
-using Soulgram.AccountManage.Infrastracture.IntegrationEvents.EventHandling;
-using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
+using Soulgram.AccountManage.Infrastracture.IntegrationEvents;
 using Soulgram.AccountManage.Persistence;
 using Soulgram.Eventbus.Interfaces;
 

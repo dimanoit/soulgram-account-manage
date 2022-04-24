@@ -1,12 +1,22 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Soulgram.AccountManage.Application.Converters;
-using Soulgram.AccountManage.Domain.Entities;
+using Soulgram.AccountManage.Application.Models.Requests;
 using Soulgram.AccountManage.Persistence;
 
-namespace Soulgram.AccountManage.Application.Commands.Handlers;
+namespace Soulgram.AccountManage.Application.Commands;
 
-public class SendMateRequestCommandHandler : IRequestHandler<SendMateRequestCommand>
+public class SendMateRequestCommand: IRequest
+{
+    public SendMateRequestCommand(MateRequestModel model)
+    {
+        Model = model;
+    }
+    
+    public MateRequestModel Model { get; }
+}
+
+internal class SendMateRequestCommandHandler : IRequestHandler<SendMateRequestCommand>
 {
     private readonly SoulgramContext _dbContext;
 
@@ -17,8 +27,15 @@ public class SendMateRequestCommandHandler : IRequestHandler<SendMateRequestComm
 
     public async Task<Unit> Handle(SendMateRequestCommand request, CancellationToken cancellationToken)
     {
-        var mateRequest = MateConverter.ToMateRequest(request.SenderId, request.RecipientId);
-
+        if (request.Model.SenderId == null || request.Model.RecipientId == null)
+        {
+            throw new Exception();
+        }
+        
+        await ThrowIfAlreadyExist(request.Model.SenderId, cancellationToken);
+        
+        var mateRequest = MateConverter.ToMateRequest(request.Model);
+        
         _dbContext.MateRequests.Add(mateRequest);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
@@ -36,7 +53,5 @@ public class SendMateRequestCommandHandler : IRequestHandler<SendMateRequestComm
         {
             throw new Exception("Mate request with this user already exits");
         }
-        
-
     }
 }

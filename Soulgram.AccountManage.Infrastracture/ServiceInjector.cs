@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
-using Soulgram.AccountManage.Infrastracture.IntegrationEvents.EventHandling;
+using Soulgram.AccountManage.Infrastracture.IntegrationEvents;
 using Soulgram.Eventbus;
 using Soulgram.Eventbus.Interfaces;
 using Soulgram.EventBus.RabbitMq;

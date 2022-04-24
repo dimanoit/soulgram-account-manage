@@ -1,23 +1,34 @@
 using Soulgram.AccountManage.Application.Model.Response;
+using Soulgram.AccountManage.Application.Models.Requests;
 using Soulgram.AccountManage.Domain.Entities;
 
 namespace Soulgram.AccountManage.Application.Converters;
 
 public static class MateConverter
 {
-    public static MateRequest ToMateRequest(string senderId, string recipientId)
+    public static MateRequest ToMateRequest(MateRequestModel model)
     {
         var request = new MateRequest
         {
-            SenderId = senderId,
-            RecipientId = recipientId,
+            SenderId = model.SenderId!,
+            RecipientId = model.RecipientId!,
 
             Status = MateRequestStatus.InProgress
         };
 
         return request;
     }
+    
+    public static UserMate ToUserMate(this MateRequestModel model)
+    {
+        var request = new UserMate
+        {
+            UserId = model.SenderId!,
+            MateId = model.RecipientId!,
+        };
 
+        return request;
+    }
 
     public static IEnumerable<MateRequestResponse>? ToMateRequestResponses(this MateRequest[] mateRequests)
     {

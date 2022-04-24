@@ -14,6 +14,7 @@ public sealed class SoulgramContext : DbContext
 
     public DbSet<UserInfo> UserInfos { get; set; }
     public DbSet<MateRequest> MateRequests { get; set; }
+    public DbSet<UserMate> UserMates { get; set; }
 
     public DbSet<ProfileImage> ProfileImages { get; set; }
 

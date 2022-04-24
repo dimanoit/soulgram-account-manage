@@ -1,6 +1,6 @@
 namespace Soulgram.AccountManage.Application.Model.Requests;
 
-public record CreateUserRequest
+public record CreateUserRequestModel
 {
     public string Nickname { get; init; }
     public string Email { get; init; }

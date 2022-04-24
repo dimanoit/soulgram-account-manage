@@ -1,13 +1,13 @@
 using Soulgram.AccountManage.Application.Model.Requests;
-using Soulgram.AccountManage.Infrastracture.IntegrationEvents.Events;
+using Soulgram.AccountManage.Infrastracture.IntegrationEvents;
 
 namespace Soulgram.AccountManage.Infrastracture.Converters;
 
 public static class UserEventsConvertor
 {
-    public static CreateUserRequest ToCreateUserRequest(this SuccessedUserRegistrationEvent @event)
+    public static CreateUserRequestModel ToCreateUserRequest(this SuccessedUserRegistrationEvent @event)
     {
-        return new CreateUserRequest
+        var requestModel = new CreateUserRequestModel
         {
             Birthday = @event.Birthday,
             Email = @event.Email,
@@ -15,5 +15,7 @@ public static class UserEventsConvertor
             UserId = @event.UserId,
             Fullname = @event.Fullname
         };
+
+        return requestModel;
     }
 }

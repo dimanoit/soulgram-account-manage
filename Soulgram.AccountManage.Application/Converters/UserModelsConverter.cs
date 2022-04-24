@@ -6,22 +6,21 @@ namespace Soulgram.AccountManage.Application.Converters;
 
 internal static class UserModelsConverter
 {
-    internal static UserInfo ToUserInfo(this CreateUserRequest userRequest)
+    internal static UserInfo ToUserInfo(this CreateUserRequestModel userRequestModel)
     {
         return new UserInfo
         {
-            Email = userRequest.Email,
-            Nickname = userRequest.Nickname,
-            Birthdate = userRequest.Birthday,
-            UserId = userRequest.UserId,
-            Fullname = userRequest.Fullname
+            Email = userRequestModel.Email,
+            Nickname = userRequestModel.Nickname,
+            Birthdate = userRequestModel.Birthday,
+            UserId = userRequestModel.UserId,
+            Fullname = userRequestModel.Fullname
         };
     }
 
     internal static CompactUserInfoResponse ToCompactUserInfoResponse(
         this UserInfo userInfo,
-        string imgUrl,
-        IEnumerable<string> hobbies)
+        string imgUrl)
     {
         return new CompactUserInfoResponse
         {
@@ -30,7 +29,6 @@ internal static class UserModelsConverter
             Fullname = userInfo.Fullname,
 
             ImgUrl = imgUrl,
-            Hobbies = hobbies
         };
     }
 }

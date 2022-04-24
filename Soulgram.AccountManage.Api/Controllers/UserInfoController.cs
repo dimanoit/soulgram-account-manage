@@ -17,23 +17,10 @@ public class UserInfoController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<CompactUserInfoResponse> GetUserInfo(string userId, CancellationToken cancellationToken)
+    public async Task<CompactUserInfoResponse?> GetUserInfo(string userId, CancellationToken cancellationToken)
     {
-        var getUserQuery = new GetUserQuery(userId);
+        var getUserQuery = new GetCompactUserQuery(userId);
         return await _mediator.Send(getUserQuery, cancellationToken);
-    }
-
-    [HttpPatch("{userId}/hobby/{hobbyId}")]
-    public async Task AddHobbyToUser(string userId, string hobbyId,
-        CancellationToken cancellationToken)
-    {
-        var addHobbyToUserCommand = new AddHobbyToUserCommand
-        {
-            HobbyId = hobbyId,
-            UserId = userId
-        };
-
-        await _mediator.Send(addHobbyToUserCommand, cancellationToken);
     }
 
     [HttpPatch("{userId}/profile-img")]
@@ -42,11 +29,7 @@ public class UserInfoController : ControllerBase
         [FromForm] IFormFile picture,
         CancellationToken cancellationToken)
     {
-        var uploadImageCommand = new UploadProfileImageCommand
-        {
-            Img = picture,
-            UserId = userId
-        };
+        var uploadImageCommand = new UploadProfileImageCommand(picture, userId);
 
         return await _mediator.Send(uploadImageCommand, cancellationToken);
     }
@@ -54,11 +37,7 @@ public class UserInfoController : ControllerBase
     [HttpDelete("{userId}")]
     public async Task RemoveUserInfo(string userId, CancellationToken cancellationToken)
     {
-        var deleteUserCommand = new DeleteUserCommand
-        {
-            UserId = userId
-        };
-
+        var deleteUserCommand = new DeleteUserCommand(userId);
         await _mediator.Send(deleteUserCommand, cancellationToken);
     }
 }
