@@ -1,6 +1,6 @@
 using Soulgram.AccountManage.Domain.Entities;
 
-namespace Soulgram.AccountManage.Application.Model.Response;
+namespace Soulgram.AccountManage.Application.Models.Response;
 
 public record MateRequestResponse
 {

@@ -1,6 +1,8 @@
-namespace Soulgram.AccountManage.Application.Model.Response;
+using MediatR;
 
-public record CompactUserInfoResponse
+namespace Soulgram.AccountManage.Application.Models.Response;
+
+public record CompactUserInfoResponse 
 {
     public string? Id { get; init; }
     public string? ImgUrl { get; init; }
