@@ -7,18 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Class1.cs"/>
+        <Compile Remove="Class1.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="10.0.1"/>
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1"/>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16"/>
-        <PackageReference Include="Soulgram.File.Manager" Version="1.0.8"/>
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
+        <PackageReference Include="Soulgram.File.Manager" Version="1.0.8" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj"/>
+        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj" />
     </ItemGroup>
 
 </Project>

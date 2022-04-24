@@ -10,5 +10,4 @@ public class UserInfo
     public string Fullname { get; set; }
 
     public ICollection<ProfileImage> ProfileImages { get; set; }
-    public ICollection<UserHobby> UserHobbies { get; set; }
 }
