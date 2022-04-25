@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Soulgram.AccountManage.Application.Converters;
-using Soulgram.AccountManage.Application.Model.Response;
+using Soulgram.AccountManage.Application.Models.Response;
 using Soulgram.AccountManage.Persistence;
 
 namespace Soulgram.AccountManage.Application.Queries;
@@ -31,7 +31,6 @@ internal class GetMateRequestsQueryHandler : IRequestHandler<GetMateRequestsQuer
             .AsNoTracking()
             .Where(u => u.SenderId == request.UserId || u.RecipientId == request.UserId)
             .ToArrayAsync(cancellationToken);
-
 
         var response = requests.ToMateRequestResponses();
         return response;

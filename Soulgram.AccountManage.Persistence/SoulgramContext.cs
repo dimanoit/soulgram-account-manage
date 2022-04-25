@@ -23,5 +23,7 @@ public sealed class SoulgramContext : DbContext
         base.OnModelCreating(builder);
         builder.ApplyConfiguration(new ProfileImageConfiguration());
         builder.ApplyConfiguration(new UserInfoConfiguration());
+        builder.ApplyConfiguration(new MateRequestConfiguration());
+        builder.ApplyConfiguration(new UserMateConfiguration());
     }
 }

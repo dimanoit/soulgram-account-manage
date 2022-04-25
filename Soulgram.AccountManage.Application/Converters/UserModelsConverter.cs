@@ -1,5 +1,4 @@
 using Soulgram.AccountManage.Application.Model.Requests;
-using Soulgram.AccountManage.Application.Model.Response;
 using Soulgram.AccountManage.Application.Models.Response;
 using Soulgram.AccountManage.Domain.Entities;
 
@@ -21,7 +20,7 @@ internal static class UserModelsConverter
 
     internal static CompactUserInfoResponse ToCompactUserInfoResponse(
         this UserInfo userInfo,
-        string imgUrl)
+        string? imgUrl)
     {
         return new CompactUserInfoResponse
         {

@@ -1,5 +1,5 @@
-using Soulgram.AccountManage.Application.Model.Response;
 using Soulgram.AccountManage.Application.Models.Requests;
+using Soulgram.AccountManage.Application.Models.Response;
 using Soulgram.AccountManage.Domain.Entities;
 
 namespace Soulgram.AccountManage.Application.Converters;
@@ -13,7 +13,8 @@ public static class MateConverter
             SenderId = model.SenderId!,
             RecipientId = model.RecipientId!,
 
-            Status = MateRequestStatus.InProgress
+            Status = MateRequestStatus.InProgress,
+            CreationDate = DateTime.UtcNow
         };
 
         return request;
@@ -25,6 +26,8 @@ public static class MateConverter
         {
             UserId = model.SenderId!,
             MateId = model.RecipientId!,
+            
+            CreationDate = DateTime.UtcNow
         };
 
         return request;

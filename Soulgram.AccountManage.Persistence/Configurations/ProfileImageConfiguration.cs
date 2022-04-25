@@ -4,7 +4,7 @@ using Soulgram.AccountManage.Domain.Entities;
 
 namespace Soulgram.AccountManage.Persistence.Configurations;
 
-public class ProfileImageConfiguration : IEntityTypeConfiguration<ProfileImage>
+internal class ProfileImageConfiguration : IEntityTypeConfiguration<ProfileImage>
 {
     public void Configure(EntityTypeBuilder<ProfileImage> builder)
     {

@@ -25,13 +25,21 @@ internal class GetCompactUserQueryHandler : IRequestHandler<GetCompactUserQuery,
         _dbContext = dbContext;
     }
 
-    //TODO fix that
-    public Task<CompactUserInfoResponse?> Handle(GetCompactUserQuery request, CancellationToken cancellationToken)
+    public async Task<CompactUserInfoResponse?> Handle(GetCompactUserQuery request, CancellationToken cancellationToken)
     {
-        var userInfo = _dbContext.UserInfos
-            .AsNoTracking()
-            .Include(u => u.ProfileImages)
-            .Select(u => u.ToCompactUserInfoResponse(i))
-            .ToArrayAsync(cancellationToken);
+        var profileImg = await _dbContext
+            .ProfileImages
+            .Where(pi => pi.UserId == request.UserId)
+            .OrderByDescending(pi => pi.CreationDate)
+            .Select(pi => pi.ImgUrl)
+            .LastOrDefaultAsync(cancellationToken);
+
+        var userInfo = await _dbContext
+            .UserInfos
+            .Where(ui => ui.UserId == request.UserId)
+            .Select(u => u.ToCompactUserInfoResponse(profileImg))
+            .SingleOrDefaultAsync(cancellationToken);
+
+        return userInfo;
     }
 }

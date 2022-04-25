@@ -8,6 +8,6 @@ public class UserInfo
     public string Nickname { get; set; }
 
     public string Fullname { get; set; }
-
+    
     public ICollection<ProfileImage> ProfileImages { get; set; }
 }

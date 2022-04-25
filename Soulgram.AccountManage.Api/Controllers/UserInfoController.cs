@@ -1,7 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Soulgram.AccountManage.Application.Commands;
-using Soulgram.AccountManage.Application.Model.Response;
+using Soulgram.AccountManage.Application.Models.Response;
 using Soulgram.AccountManage.Application.Queries;
 
 namespace Soulgram.AccountManage.Api.Controllers;

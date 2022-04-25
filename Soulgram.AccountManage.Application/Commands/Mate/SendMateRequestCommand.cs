@@ -4,7 +4,7 @@ using Soulgram.AccountManage.Application.Converters;
 using Soulgram.AccountManage.Application.Models.Requests;
 using Soulgram.AccountManage.Persistence;
 
-namespace Soulgram.AccountManage.Application.Commands;
+namespace Soulgram.AccountManage.Application.Commands.Mate;
 
 public class SendMateRequestCommand: IRequest
 {

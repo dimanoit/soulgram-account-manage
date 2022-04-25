@@ -4,7 +4,7 @@ using Soulgram.AccountManage.Domain.Entities;
 
 namespace Soulgram.AccountManage.Persistence.Configurations;
 
-public class UserInfoConfiguration : IEntityTypeConfiguration<UserInfo>
+internal class UserInfoConfiguration : IEntityTypeConfiguration<UserInfo>
 {
     public void Configure(EntityTypeBuilder<UserInfo> builder)
     {
