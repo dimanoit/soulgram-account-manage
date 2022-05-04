@@ -6,16 +6,6 @@ namespace Soulgram.AccountManage.Application.Queries;
 
 public class GetGenresQuery : IRequest<ICollection<string>?>
 {
-    public GetGenresQuery()
-    {
-    }
-
-    public GetGenresQuery(string genreName)
-    {
-        GenreName = genreName;
-    }
-
-    public string? GenreName { get; }
 }
 
 public class GetGenresQueryHandler : IRequestHandler<GetGenresQuery, ICollection<string>?>
@@ -29,17 +19,9 @@ public class GetGenresQueryHandler : IRequestHandler<GetGenresQuery, ICollection
 
     public async Task<ICollection<string>?> Handle(GetGenresQuery request, CancellationToken cancellationToken)
     {
-        var genresQuery = _dbContext
+        var genresNames = await _dbContext
             .Genres
-            .AsNoTracking();
-
-        if (!string.IsNullOrEmpty(request.GenreName))
-        {
-            genresQuery = genresQuery
-                .Where(g => g.Name.Contains(request.GenreName));
-        }
-
-        var genresNames = await genresQuery
+            .AsNoTracking()
             .Select(g => g.Name)
             .ToArrayAsync(cancellationToken);
 

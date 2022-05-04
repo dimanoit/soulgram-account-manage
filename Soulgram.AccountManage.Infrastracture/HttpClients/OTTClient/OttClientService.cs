@@ -20,15 +20,7 @@ public class OttClientService : IMovieSearchService
         var baseAddress = $"https://{settings.Value.Host}";
         _httpClient.BaseAddress = new Uri(baseAddress);
 
-        if (settings.Value.Headers == null)
-        {
-            return;
-        }
-
-        foreach (var (key, value) in settings.Value.Headers)
-        {
-            _httpClient.DefaultRequestHeaders.Add(key, value);
-        }
+        _httpClient.DefaultRequestHeaders.Add(key, value);
     }
 
     public async Task<ICollection<string>?> GetGenresAsync(CancellationToken cancellationToken)
