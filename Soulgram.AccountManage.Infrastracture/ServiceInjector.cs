@@ -1,8 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
-using Soulgram.AccountManage.Application.Services;
-using Soulgram.AccountManage.Infrastracture.HttpClients.OTTClient;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents;
 using Soulgram.Eventbus;
 using Soulgram.Eventbus.Interfaces;
@@ -21,16 +19,6 @@ public static class ServiceInjector
     {
         serviceCollection.AddEventBus(configuration);
         serviceCollection.AddLocalFileManager(configuration);
-
-        AddOttService(serviceCollection, configuration);
-    }
-
-    private static void AddOttService(IServiceCollection serviceCollection, IConfiguration configuration)
-    {
-        serviceCollection.Configure<OTTClientSettings>(options =>
-            configuration.GetSection("OTTClientSettings").Bind(options));
-        serviceCollection.AddHttpClient<OttClientService>();
-        serviceCollection.AddScoped<IMovieSearchService, OttClientService>();
     }
 
     private static void AddLocalFileManager(this IServiceCollection services, IConfiguration configuration)
