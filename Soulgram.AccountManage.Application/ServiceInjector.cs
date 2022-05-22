@@ -15,6 +15,7 @@ public static class ServiceInjector
         this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
+        serviceCollection.AddLogging(configuration);
         serviceCollection.AddMediatR(typeof(CreateUserCommand).GetTypeInfo().Assembly);
         serviceCollection.AddTransient<IMateService, MateService>();
     }

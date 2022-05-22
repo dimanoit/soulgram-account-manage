@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Soulgram.AccountManage.Application\Soulgram.AccountManage.Application.csproj" />
-        <ProjectReference Include="..\Soulgram.AccountManage.Infrastracture\Soulgram.AccountManage.Infrastracture.csproj" />
-        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj" />
+        <PackageReference Include="Serilog.AspNetCore" Version="5.0.0"/>
+        <ProjectReference Include="..\Soulgram.AccountManage.Application\Soulgram.AccountManage.Application.csproj"/>
+        <ProjectReference Include="..\Soulgram.AccountManage.Infrastracture\Soulgram.AccountManage.Infrastracture.csproj"/>
+        <ProjectReference Include="..\Soulgram.AccountManage.Persistence\Soulgram.AccountManage.Persistence.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

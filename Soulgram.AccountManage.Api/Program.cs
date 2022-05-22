@@ -1,3 +1,4 @@
+using Serilog;
 using Soulgram.AccountManage.Application;
 using Soulgram.AccountManage.Infrastracture;
 using Soulgram.AccountManage.Infrastracture.IntegrationEvents;
