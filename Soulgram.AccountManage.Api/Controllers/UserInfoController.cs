@@ -40,4 +40,14 @@ public class UserInfoController : ControllerBase
         var deleteUserCommand = new DeleteUserCommand(userId);
         await _mediator.Send(deleteUserCommand, cancellationToken);
     }
+
+    [HttpDelete("{userId}/profile-img/{imgId}")]
+    public async Task DeleteUserProfileImage(
+        string userId,
+        string imgId,
+        CancellationToken cancellationToken)
+    {
+        var deleteUserCommand = new DeleteUserProfileImg(userId, imgId);
+        await _mediator.Send(deleteUserCommand, cancellationToken);
+    }
 }
