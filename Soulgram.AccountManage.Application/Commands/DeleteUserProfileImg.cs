@@ -36,15 +36,19 @@ internal class DeleteUserProfileImgHandler : IRequestHandler<DeleteUserProfileIm
 
     public async Task<Unit> Handle(DeleteUserProfileImg request, CancellationToken cancellationToken)
     {
+        var imageToRemove = await _dbContext.ProfileImages
+            .SingleOrDefaultAsync(_ => _.Id == request.ImgId && _.UserId == request.UserId
+                , cancellationToken);
+
+        if (imageToRemove == null)
+        {
+            return Unit.Value;
+        }
+        
         await using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
         try
         {
-            var imageToRemove = await _dbContext.ProfileImages
-                .SingleOrDefaultAsync(_ => _.Id == request.ImgId && _.UserId == request.UserId
-                    , cancellationToken);
-
-            // TODO add file delete to file manager package
-            //_fileManager.DeleteFileAsync(imageToRemove.ImgUrl);
+            await _fileManager.DeleteFileAsync(imageToRemove.ImgUrl);
 
             _dbContext.ProfileImages.Remove(imageToRemove ?? throw new InvalidOperationException(
                 $"Img with url {request.ImgId} doesn't exit"));

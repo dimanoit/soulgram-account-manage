@@ -6,7 +6,7 @@ using Soulgram.AccountManage.Application.Queries;
 
 namespace Soulgram.AccountManage.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/user-info")]
 public class UserInfoController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -23,31 +23,10 @@ public class UserInfoController : ControllerBase
         return await _mediator.Send(getUserQuery, cancellationToken);
     }
 
-    [HttpPatch("{userId}/profile-img")]
-    public async Task<string> UploadProfilePicture(
-        string userId,
-        [FromForm] IFormFile picture,
-        CancellationToken cancellationToken)
-    {
-        var uploadImageCommand = new UploadProfileImageCommand(picture, userId);
-
-        return await _mediator.Send(uploadImageCommand, cancellationToken);
-    }
-
     [HttpDelete("{userId}")]
     public async Task RemoveUserInfo(string userId, CancellationToken cancellationToken)
     {
         var deleteUserCommand = new DeleteUserCommand(userId);
-        await _mediator.Send(deleteUserCommand, cancellationToken);
-    }
-
-    [HttpDelete("{userId}/profile-img/{imgId}")]
-    public async Task DeleteUserProfileImage(
-        string userId,
-        string imgId,
-        CancellationToken cancellationToken)
-    {
-        var deleteUserCommand = new DeleteUserProfileImg(userId, imgId);
         await _mediator.Send(deleteUserCommand, cancellationToken);
     }
 }
