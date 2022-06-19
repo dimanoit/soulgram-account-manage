@@ -18,7 +18,8 @@ public static class ServiceInjector
         IConfiguration configuration)
     {
         serviceCollection.AddEventBus(configuration);
-        serviceCollection.AddLocalFileManager(configuration);
+        serviceCollection.AddFileManager(configuration);
+        //serviceCollection.AddLocalFileManager(configuration);
     }
 
     private static void AddLocalFileManager(this IServiceCollection services, IConfiguration configuration)
@@ -27,6 +28,13 @@ public static class ServiceInjector
             configuration.GetSection("LocalFileManagerOptions").Bind(options));
 
         services.AddScoped<IFileManager, LocalFileManager>();
+    }
+    
+    private static void AddFileManager(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<BlobStorageOptions>(options => configuration.GetSection("BlobStorageOptions").Bind(options));
+        services.AddScoped<IContainerNameResolver, ContainerNameResolver>();
+        services.AddScoped<IFileManager, FileManager>();
     }
 
     private static void AddEventBus(this IServiceCollection serviceCollection, IConfiguration configuration)
